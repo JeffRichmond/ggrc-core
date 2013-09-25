@@ -11,6 +11,9 @@ def translate_message(exception):
   Translates db exceptions to something a user can understand.
   """
   message = exception.message
+  print dir(exception)
+  print type(exception)
+  print exception.code
   if isinstance(exception, IntegrityError):
     # TODO: Handle not null, foreign key errors, uniqueness errors with compound keys
     duplicate_entry_pattern = re.compile(r'\(1062, "(Duplicate entry \'[^\']*\')')
