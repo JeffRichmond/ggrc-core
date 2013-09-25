@@ -14,7 +14,6 @@ def translate_message(exception):
   print exception
   print dir(exception)
   print type(exception)
-  print exception.instance
   print exception.message
   print exception.orig
   if isinstance(exception, IntegrityError):
@@ -23,6 +22,7 @@ def translate_message(exception):
     duplicate_entry_pattern = re.compile(r'\(1062, "(Duplicate entry \'[^\']*\')')
     matches = duplicate_entry_pattern.search(message)
     if matches:
+      print "Yup", matches
       return matches.group(1)
     else:
       return message
